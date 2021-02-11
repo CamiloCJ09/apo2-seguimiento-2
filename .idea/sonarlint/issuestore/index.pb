@@ -7,3 +7,5 @@ H
 src/ui/Main.java,e\b\ebe8214aea720e1ed7c01e1c59390b69406ecdc1
 H
 src/ui/ClassroomGUI.java,e\5\e53405256500e03a080a26ba00bf7c4d250da376
+D
+src/ui/register.fxml,e\f\ef14d3f25ef1746b543a2191df8fddda6e2a2147
