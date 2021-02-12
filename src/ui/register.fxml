@@ -33,16 +33,16 @@
             <Label layoutX="194.0" layoutY="197.0" text="Profile photo:" />
             <TextField fx:id="fileDirectory" layoutX="293.0" layoutY="193.0" prefHeight="25.0" prefWidth="110.0" />
             <Button layoutX="426.0" layoutY="193.0" mnemonicParsing="false" onAction="#browseFileToChoose" text="Browse" />
-            <RadioButton layoutX="265.0" layoutY="232.0" mnemonicParsing="false" text="Male">
+            <RadioButton fx:id="maleSelect" layoutX="265.0" layoutY="232.0" mnemonicParsing="false" text="Male">
                <toggleGroup>
                   <ToggleGroup fx:id="genderGroup" />
                </toggleGroup></RadioButton>
             <Label layoutX="217.0" layoutY="232.0" text="Gender:" />
-            <RadioButton layoutX="320.0" layoutY="232.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="64.0" text="Female" toggleGroup="$genderGroup" />
-            <RadioButton layoutX="383.0" layoutY="232.0" mnemonicParsing="false" text="Other" toggleGroup="$genderGroup" />
-            <CheckBox layoutX="283.0" layoutY="267.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="145.0" text="Software Engineering" />
-            <CheckBox layoutX="283.0" layoutY="290.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="145.0" text="Telematic Engineering" />
-            <CheckBox layoutX="283.0" layoutY="315.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="145.0" text="Industrial Engineering" />
+            <RadioButton fx:id="femaleSelect" layoutX="320.0" layoutY="232.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="64.0" text="Female" toggleGroup="$genderGroup" />
+            <RadioButton fx:id="otherSelect" layoutX="383.0" layoutY="232.0" mnemonicParsing="false" text="Other" toggleGroup="$genderGroup" />
+            <CheckBox fx:id="softwareEnSelect" layoutX="283.0" layoutY="267.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="145.0" text="Software Engineering" />
+            <CheckBox fx:id="teleamticEnSelect" layoutX="283.0" layoutY="290.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="145.0" text="Telematic Engineering" />
+            <CheckBox fx:id="industrialEnSelect" layoutX="283.0" layoutY="315.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="145.0" text="Industrial Engineering" />
             <Label layoutX="218.0" layoutY="267.0" prefHeight="17.0" prefWidth="42.0" text="Career:" />
             <DatePicker fx:id="birthdayDate" layoutX="271.0" layoutY="342.0" prefHeight="25.0" prefWidth="157.0" />
             <Label layoutX="215.0" layoutY="346.0" text="Birthday:" />
