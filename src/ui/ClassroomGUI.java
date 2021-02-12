@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
@@ -89,30 +90,50 @@ public class ClassroomGUI {
     @FXML
     void createAccount(ActionEvent event) {
         //getting the gender of the user from the radio button
-        String gender = "";
-        if(maleSelect.isSelected()){ gender = "Male";}
-        else if(femaleSelect.isSelected()){ gender = "Female";}
-        else { gender = "Other";}
+        try{
+            String gender = "";
+            if(maleSelect.isSelected()){ gender = "Male";}
+            else if(femaleSelect.isSelected()){ gender = "Female";}
+            else { gender = "Other";}
 
-        //getting the career of the user from the check box
-        ArrayList<String> careers = new ArrayList<String>(3);
-        if(softwareEnSelect.isSelected()){careers.add("Software Engineering");}
-        if(teleamticEnSelect.isSelected()){careers.add("Telematic Engineering");}
-        if(industrialEnSelect.isSelected()){careers.add("Industrial Engineering");}
+            //getting the career of the user from the check box
+            ArrayList<String> careers = new ArrayList<String>(3);
+            if(softwareEnSelect.isSelected()){careers.add("Software Engineering");}
+            if(teleamticEnSelect.isSelected()){careers.add("Telematic Engineering");}
+            if(industrialEnSelect.isSelected()){careers.add("Industrial Engineering");}
 
-        String birthday = "";
-        if(birthdayDate != null){
-            birthday = birthdayDate.getValue().toString();
-        }
-
-        try {
-            if(genderGroup.getSelectedToggle() != null) {
-                //classroom.addUser(newUsername.getText(), newPassword.getText(), gender,
-                        //imageProfile,careers, birthday);
-            imageProfile = null;
+            String birthday = "";
+            if(birthdayDate != null){
+                birthday = birthdayDate.getValue().toString();
+            }
+            String favBrow = "";
+            if(favoriteBrowser != null){
+                favBrow = favoriteBrowser.getValue().toString();
+            }
+            if((!newUsername.getText().equals("")) && (!newPassword.getText().equals("")) && (!gender.equals(""))
+                    && (imageProfile != null) && (!careers.isEmpty()) && !(birthdayDate.getValue() == null) && !(favoriteBrowser.getValue() == null)) {
+                classroom.addUser(newUsername.getText(), newPassword.getText(), gender,
+                        imageProfile,careers, birthday, favBrow);
+                imageProfile = null;
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText(null);
+                alert.setContentText("User created successfully");
+                alert.showAndWait();
+            }else{
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Fill al the fields before create a account");
+                alert.showAndWait();
+                //loginStage();
             }
         }catch(Exception ex){
-
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Fill al the fields before create a account");
+            alert.showAndWait();
         }
 
     }
