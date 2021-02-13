@@ -56,8 +56,12 @@ public class UserAccount {
         this.photo = photo;
     }
 
-    public ArrayList<String> getCareers() {
-        return careers;
+    public String getCareers() {
+        String careersString = "";
+        for(int i = 0; i < careers.size(); i++){
+            careersString += careers.get(i)+" ";
+        }
+        return careersString;
     }
 
     public void setCareers(ArrayList<String> careers) {

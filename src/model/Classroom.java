@@ -20,4 +20,26 @@ public class Classroom {
             System.out.println(users.get(i).getUsername());
         }
     }
+    public boolean canLogin(String loginUsername, String loginPassword){
+        boolean canLogin = false;
+        for(int i = 0; i < users.size(); i++){
+            if(users.get(i).getUsername().equals(loginUsername)
+            && users.get(i).getPassword().equals(loginPassword)){
+                canLogin = true;
+            }
+        }
+        return canLogin;
+    }
+    public ArrayList<UserAccount> getUsers(){
+        return users;
+    }
+    public Image returnUserImage(String usernameToFind){
+        Image imageToReturn = null;
+        for(int i = 0; i < users.size(); i++){
+            if(users.get(i).getUsername().equals(usernameToFind)){
+                imageToReturn = users.get(i).getPhoto();
+            }
+        }
+        return imageToReturn;
+    }
 }

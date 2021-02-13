@@ -1,17 +1,21 @@
 package ui;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Classroom;
+import model.UserAccount;
 
 import java.io.File;
 import java.io.IOException;
@@ -70,25 +74,50 @@ public class ClassroomGUI {
     @FXML
     private ChoiceBox<String> favoriteBrowser;
 
+    @FXML
+    private TableView<UserAccount> tableViewUseraccount;
+
+    @FXML
+    private TableColumn<UserAccount, String> usernameColumn;
+
+    @FXML
+    private TableColumn<UserAccount, String> GenderColumn;
+
+    @FXML
+    private TableColumn<UserAccount, String> careerColumn;
+
+    @FXML
+    private TableColumn<UserAccount, String> birthdayColumn;
+
+    @FXML
+    private TableColumn<UserAccount, String> browserColumn;
+
     private Image imageProfile;
 
     @FXML
-    void browseFileToChoose(ActionEvent event) {
+    private Label usernameInAccountList;
+
+    @FXML
+    private ImageView userImageInAccountList;
+
+    @FXML
+    public void browseFileToChoose(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select a image");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
         Stage primaryStage = (Stage)mainPane.getScene().getWindow();
         File fileToSave = fileChooser.showOpenDialog(primaryStage);
         imageProfile = new Image(fileToSave.toURI().toString());
+        //System.out.println(fileToSave.getPath());
         if(imageProfile != null){
-            fileDirectory.setText("Image uploaded");
+            fileDirectory.setText(fileToSave.getPath().toString());
         }else{
             fileDirectory.setText("Image not found");
         }
     }
 
     @FXML
-    void createAccount(ActionEvent event) {
+    public void createAccount(ActionEvent event) {
         //getting the gender of the user from the radio button
         try{
             String gender = "";
@@ -120,13 +149,13 @@ public class ClassroomGUI {
                 alert.setHeaderText(null);
                 alert.setContentText("User created successfully");
                 alert.showAndWait();
+                singUpAction(event);
             }else{
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Error");
                 alert.setHeaderText(null);
                 alert.setContentText("Fill al the fields before create a account");
                 alert.showAndWait();
-                //loginStage();
             }
         }catch(Exception ex){
             Alert alert = new Alert(AlertType.INFORMATION);
@@ -139,16 +168,40 @@ public class ClassroomGUI {
     }
 
     @FXML
-    void goToSignInScreen(ActionEvent event) {
+    public void goToSignInScreen(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
+        fxmlLoader.setController(this);
+        Parent addContactPane = fxmlLoader.load();
 
+        mainPane.getChildren().setAll(addContactPane);
     }
     @FXML
-    void loginAction(ActionEvent event) {
+    public void loginAction(ActionEvent event) {
+        try {
+            String userToLogin = loginUsernameField.getText();
+            String passwordToLogin = loginPasswordField.getText();
+            if(classroom.canLogin(userToLogin, passwordToLogin)){
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("account-list.fxml"));
+                fxmlLoader.setController(this);
+                Parent addContactPane = fxmlLoader.load();
+                mainPane.getChildren().setAll(addContactPane);
+                userImageInAccountList.setImage(classroom.returnUserImage(userToLogin));
+                usernameInAccountList.setText(userToLogin);
+                initializeTableView();
 
+            }
+        } catch (Exception ex){
+            ex.printStackTrace();
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Fill al the fields before login");
+            alert.showAndWait();
+        }
     }
 
     @FXML
-    void singUpAction(ActionEvent event) throws IOException {
+    public void singUpAction(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("register.fxml"));
         fxmlLoader.setController(this);
         Parent addContactPane = fxmlLoader.load();
@@ -160,18 +213,30 @@ public class ClassroomGUI {
         favoriteBrowser.getItems().add("Brave");
         favoriteBrowser.getItems().add("Opera");
         favoriteBrowser.getItems().add("Chrome");
-        /*
-        favoriteBrowser = new ChoiceBox<String>();
-        favoriteBrowser.getItems().add("Brave");
-         */
+
     }
     @FXML
-    void startApp(ActionEvent event) throws IOException {
+    public void logOutAction(ActionEvent event) throws IOException {
+        startApp(event);
+    }
+    @FXML
+    public void startApp(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
         fxmlLoader.setController(this);
         Parent addContactPane = fxmlLoader.load();
 
         //Parent addContacts = FXMLLoader.load(getClass().getResource("addContact.fxml"));
         mainPane.getChildren().setAll(addContactPane);
+    }
+    private void initializeTableView(){
+        ObservableList<UserAccount> observableList;
+        observableList = FXCollections.observableArrayList(classroom.getUsers());
+
+        tableViewUseraccount.setItems(observableList);
+        usernameColumn.setCellValueFactory(new PropertyValueFactory<UserAccount, String>("username"));
+        GenderColumn.setCellValueFactory(new PropertyValueFactory<UserAccount, String>("gender"));
+        careerColumn.setCellValueFactory(new PropertyValueFactory<UserAccount, String>("careers"));
+        birthdayColumn.setCellValueFactory(new PropertyValueFactory<UserAccount, String>("birthday"));
+        browserColumn.setCellValueFactory(new PropertyValueFactory<UserAccount, String>("favBrowser"));
     }
 }

@@ -9,28 +9,27 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="636.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="4.0" layoutY="8.0" prefHeight="419.0" prefWidth="629.0">
          <children>
-            <Label layoutX="433.0" layoutY="33.0" text="Username" />
-            <ImageView fitHeight="56.0" fitWidth="54.0" layoutX="494.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
-            <Button layoutX="558.0" layoutY="29.0" mnemonicParsing="false" text="Log out" />
+            <Label fx:id="usernameInAccountList" layoutX="430.0" layoutY="33.0" prefHeight="25.0" prefWidth="57.0" text="Username" />
+            <ImageView fx:id="userImageInAccountList" fitHeight="68.0" fitWidth="69.0" layoutX="494.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
             <Label layoutX="227.0" layoutY="77.0" text="User account list">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <TableView layoutX="32.0" layoutY="124.0" prefHeight="281.0" prefWidth="575.0">
+            <TableView fx:id="tableViewUseraccount" layoutX="32.0" layoutY="124.0" prefHeight="281.0" prefWidth="575.0">
               <columns>
-                <TableColumn prefWidth="89.0" text="Username" />
-                <TableColumn prefWidth="107.0" text="Gender" />
-                  <TableColumn prefWidth="131.0" text="Carrer" />
-                  <TableColumn prefWidth="138.0" text="Birthday" />
-                  <TableColumn prefWidth="109.0" text="Browser" />
+                <TableColumn fx:id="usernameColumn" prefWidth="89.0" text="Username" />
+                <TableColumn fx:id="GenderColumn" prefWidth="107.0" text="Gender" />
+                  <TableColumn fx:id="careerColumn" prefWidth="131.0" text="Career" />
+                  <TableColumn fx:id="birthdayColumn" prefWidth="138.0" text="Birthday" />
+                  <TableColumn fx:id="browserColumn" prefWidth="109.0" text="Browser" />
               </columns>
             </TableView>
+            <Button layoutX="558.0" layoutY="33.0" mnemonicParsing="false" onAction="#logOutAction" text="Log out" />
          </children>
       </AnchorPane>
    </children>
