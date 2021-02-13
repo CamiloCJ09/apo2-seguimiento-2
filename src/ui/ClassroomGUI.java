@@ -106,7 +106,7 @@ public class ClassroomGUI {
         fileChooser.setTitle("Select a image");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
         Stage primaryStage = (Stage)mainPane.getScene().getWindow();
-        File fileToSave = fileChooser.showOpenDialog(primaryStage);
+        File fileToSave = fileChooser.showOpenDialog(null);
         imageProfile = new Image(fileToSave.toURI().toString());
         //System.out.println(fileToSave.getPath());
         if(imageProfile != null){
@@ -190,7 +190,12 @@ public class ClassroomGUI {
                     usernameInAccountList.setText(userToLogin);
                     //tableViewUseraccount.prefWidthProperty().bind(mainPane.widthProperty());
                     initializeTableView();
-
+                }else{
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Wrong data");
+                    alert.showAndWait();
                 }
             }else{
                 Alert alert = new Alert(AlertType.INFORMATION);
