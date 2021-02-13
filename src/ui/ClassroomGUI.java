@@ -106,7 +106,7 @@ public class ClassroomGUI {
         fileChooser.setTitle("Select a image");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
         Stage primaryStage = (Stage)mainPane.getScene().getWindow();
-        File fileToSave = fileChooser.showOpenDialog(null);
+        File fileToSave = fileChooser.showOpenDialog(primaryStage);
         imageProfile = new Image(fileToSave.toURI().toString());
         //System.out.println(fileToSave.getPath());
         if(imageProfile != null){
