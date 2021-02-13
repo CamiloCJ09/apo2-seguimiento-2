@@ -178,17 +178,26 @@ public class ClassroomGUI {
     @FXML
     public void loginAction(ActionEvent event) {
         try {
-            String userToLogin = loginUsernameField.getText();
-            String passwordToLogin = loginPasswordField.getText();
-            if(classroom.canLogin(userToLogin, passwordToLogin)){
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("account-list.fxml"));
-                fxmlLoader.setController(this);
-                Parent addContactPane = fxmlLoader.load();
-                mainPane.getChildren().setAll(addContactPane);
-                userImageInAccountList.setImage(classroom.returnUserImage(userToLogin));
-                usernameInAccountList.setText(userToLogin);
-                initializeTableView();
+            if(!loginUsernameField.getText().equals("") && !loginPasswordField.getText().equals("")) {
+                String userToLogin = loginUsernameField.getText();
+                String passwordToLogin = loginPasswordField.getText();
+                if (classroom.canLogin(userToLogin, passwordToLogin)) {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("account-list.fxml"));
+                    fxmlLoader.setController(this);
+                    Parent addContactPane = fxmlLoader.load();
+                    mainPane.getChildren().setAll(addContactPane);
+                    userImageInAccountList.setImage(classroom.returnUserImage(userToLogin));
+                    usernameInAccountList.setText(userToLogin);
+                    //tableViewUseraccount.prefWidthProperty().bind(mainPane.widthProperty());
+                    initializeTableView();
 
+                }
+            }else{
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Fill al the fields before login");
+                alert.showAndWait();
             }
         } catch (Exception ex){
             ex.printStackTrace();

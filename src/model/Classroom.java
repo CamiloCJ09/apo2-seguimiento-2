@@ -16,9 +16,6 @@ public class Classroom {
         UserAccount userAccount1 = new UserAccount(username, password, gender, photo, careers, birthday, favBrowser);
         users.add(userAccount1);
 
-        for(int i = 0; i < users.size(); i++){
-            System.out.println(users.get(i).getUsername());
-        }
     }
     public boolean canLogin(String loginUsername, String loginPassword){
         boolean canLogin = false;

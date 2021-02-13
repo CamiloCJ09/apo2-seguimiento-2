@@ -20,7 +20,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <TableView fx:id="tableViewUseraccount" layoutX="32.0" layoutY="124.0" prefHeight="281.0" prefWidth="575.0">
+            <TableView fx:id="tableViewUseraccount" layoutX="32.0" layoutY="124.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="575.0">
               <columns>
                 <TableColumn fx:id="usernameColumn" prefWidth="89.0" text="Username" />
                 <TableColumn fx:id="GenderColumn" prefWidth="107.0" text="Gender" />
