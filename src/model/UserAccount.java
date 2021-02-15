@@ -1,7 +1,5 @@
 package model;
 
-import javafx.scene.image.Image;
-
 import java.util.ArrayList;
 
 public class UserAccount {
@@ -9,12 +7,12 @@ public class UserAccount {
     private String username;
     private String password;
     private String gender;
-    private Image photo;
+    private String photo;
     private ArrayList<String> careers;
     private String birthday;
     private String favBrowser;
 
-    public UserAccount(String username, String password, String gender, Image photo, ArrayList<String> careers, String birthday, String favBrowser) {
+    public UserAccount(String username, String password, String gender, String photo, ArrayList<String> careers, String birthday, String favBrowser) {
         this.username = username;
         this.password = password;
         this.gender = gender;
@@ -48,11 +46,11 @@ public class UserAccount {
         this.gender = gender;
     }
 
-    public Image getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(Image photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 

@@ -1,0 +1,7 @@
+
+”
+java:S1319C"rThe type of the "careers" object should be an interface such as "List" rather than the implementation "ArrayList".(¸¼â±ùÿÿÿÿ8ô•©¼ù.
+”
+java:S1319"rThe type of the "careers" object should be an interface such as "List" rather than the implementation "ArrayList".(ê¢‡óøÿÿÿÿ8ğ€¤¼ù.
+9
+java:S1643>"Use a StringBuilder instead.(ÊõÜ8¬Ó¥Äù.

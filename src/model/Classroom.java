@@ -12,7 +12,7 @@ public class Classroom {
         users = new ArrayList<UserAccount>();
     }
 
-    public void addUser(String username, String password, String gender, Image photo, ArrayList<String> careers, String birthday, String favBrowser){
+    public void addUser(String username, String password, String gender, String photo, ArrayList<String> careers, String birthday, String favBrowser){
         UserAccount userAccount1 = new UserAccount(username, password, gender, photo, careers, birthday, favBrowser);
         users.add(userAccount1);
 
@@ -30,8 +30,9 @@ public class Classroom {
     public ArrayList<UserAccount> getUsers(){
         return users;
     }
-    public Image returnUserImage(String usernameToFind){
-        Image imageToReturn = null;
+
+    public String returnUserImage(String usernameToFind){
+        String imageToReturn = null;
         for(int i = 0; i < users.size(); i++){
             if(users.get(i).getUsername().equals(usernameToFind)){
                 imageToReturn = users.get(i).getPhoto();

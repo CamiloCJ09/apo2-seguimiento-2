@@ -1,0 +1,5 @@
+
+”
+java:S1319"rThe type of the "careers" object should be an interface such as "List" rather than the implementation "ArrayList".(½ß¤Îşÿÿÿÿ8Âë¥¼ù.
+
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(‚•Ôé8èå€Äù.

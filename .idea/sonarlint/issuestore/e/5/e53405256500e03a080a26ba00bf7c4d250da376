@@ -1,13 +1,20 @@
 
-£
-java:S1186L"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(šÍµæüÿÿÿÿ8‚µ³úø.
-O
-java:S1068"-Remove this unused "classroom" private field.(å‡ıåıÿÿÿÿ8Ëé¼úø.
-Q
-java:S1481;"/Remove this unused "fileToSave" local variable.(ˆğªÕûÿÿÿÿ8ì…ù.
-£
-java:S1186H"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ù‘°£øÿÿÿÿ8‹Ëé™ù.
-Z
-java:S1128"=Remove this unused import 'javafx.collections.FXCollections'.(´¶²Æ8¥Ü·œù.
 `
-java:S1854;">Remove this useless assignment to local variable "fileToSave".(ˆğªÕûÿÿÿÿ8ì…ù.
+java:S2583p"CChange this condition so that it does not always evaluate to "true"(‹»Ïß8Ûì»ù.
+G
+java:S1940")Use the opposite operator ("!=") instead.(Ò»üŸ8ªŒ¬¿ù.
+s	java:S116T"WRename this field "GenderColumn" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ†‡Ç8ÙıóÃù.
+k
+java:S2259"MA "NullPointerException" could be thrown; "favoriteBrowser" is nullable here.(Ò»üŸ8ªŒ¬¿ù.
+G
+java:S1940")Use the opposite operator ("!=") instead.(Ò»üŸ8ªŒ¬¿ù.
+d
+java:S1192›"FDefine a constant instead of duplicating this literal "Error" 5 times.(µûø–8ÀµîÄù.
+h
+java:S2259"JA "NullPointerException" could be thrown; "birthdayDate" is nullable here.(Ò»üŸ8ªŒ¬¿ù.
+„
+java:S4144í"aUpdate this method so that its implementation is not identical to "goToSignInScreen" on line 171.(£æâòşÿÿÿÿ8Çó©Æù.
+^
+java:S1858q"A"getPath" returns a string, there's no need to call "toString()".(ğÛ¡–8öŠƒÀù.
+_
+java:S1858Œ"B"getValue" returns a string, there's no need to call "toString()".(Õ÷¹8Ş˜©¿ù.

@@ -92,7 +92,7 @@ public class ClassroomGUI {
     @FXML
     private TableColumn<UserAccount, String> browserColumn;
 
-    private Image imageProfile;
+    private String imageProfile;
 
     @FXML
     private Label usernameInAccountList;
@@ -107,7 +107,7 @@ public class ClassroomGUI {
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
         Stage primaryStage = (Stage)mainPane.getScene().getWindow();
         File fileToSave = fileChooser.showOpenDialog(primaryStage);
-        imageProfile = new Image(fileToSave.toURI().toString());
+        imageProfile = fileToSave.toURI().toString();
         //System.out.println(fileToSave.getPath());
         if(imageProfile != null){
             fileDirectory.setText(fileToSave.getPath().toString());
@@ -186,7 +186,7 @@ public class ClassroomGUI {
                     fxmlLoader.setController(this);
                     Parent addContactPane = fxmlLoader.load();
                     mainPane.getChildren().setAll(addContactPane);
-                    userImageInAccountList.setImage(classroom.returnUserImage(userToLogin));
+                    userImageInAccountList.setImage(new Image(classroom.returnUserImage(userToLogin)));
                     usernameInAccountList.setText(userToLogin);
                     //tableViewUseraccount.prefWidthProperty().bind(mainPane.widthProperty());
                     initializeTableView();
